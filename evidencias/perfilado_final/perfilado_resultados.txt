@@ -886,3 +886,99 @@ ERROR at line 9:
 ORA-43918: This argument must be a literal 
 
 
+
+================ CONTINUACION: CONSULTAS 11 Y 12 ================
+SHA256 DEL SCRIPT ACTUAL: 36edbd12119e3b075d02d5949d08089901383b633fb9baec098395260b65147a
+
+"USUARIO","BASE_DATOS"
+"GRUPO2","XE"
+
+1 row selected.
+
+Elapsed: 00:00:00.00
+
+"INICIO_CONTINUACION"
+"2026-10-11 16:58:13.721 -06:00"
+
+1 row selected.
+
+Elapsed: 00:00:00.00
+
+================ CONSULTA 11 ================
+Revisa VIOLATIONS faltantes, vacíos o espacios, longitud máxima y textos mayores a 4000
+
+"VIOLATIONS_NULOS","VACIOS_O_ESPACIOS","LONGITUD_MAXIMA","MAYORES_4000"
+89410,0,12706,4469
+
+1 row selected.
+
+Elapsed: 00:00:24.07
+FIN DE CONSULTA 11
+
+================ CONSULTA 12 ================
+Cuenta licencias NULL y licencias con valor cero
+
+"LICENCIAS_NULAS","LICENCIAS_CERO"
+19,837
+
+1 row selected.
+
+Elapsed: 00:00:01.44
+FIN DE CONSULTA 12
+
+"FIN_CONTINUACION"
+"2026-10-11 16:58:39.250 -06:00"
+
+1 row selected.
+
+Elapsed: 00:00:00.00
+CONSULTAS 11 Y 12 COMPLETADAS SIN ERROR
+
+================ CONSULTA 10 - EVIDENCIA DE LA EJECUCION SEPARADA ================
+Fuente: prueba_conversion_simple.txt. Se conserva la salida y la fecha original de Oracle; esta seccion no corresponde a una nueva ejecucion.
+PRUEBA REAL DE CONVERSION SIMPLE - SIN DEFAULT ON CONVERSION ERROR
+
+"USUARIO","BASE_DATOS"
+"GRUPO2","XE"
+
+1 row selected.
+
+Elapsed: 00:00:00.00
+
+"INICIO"
+"2026-10-11 16:53:03.821 -06:00"
+
+1 row selected.
+
+Elapsed: 00:00:00.00
+PRUEBA LATITUDE - TODOS LOS VALORES NO NULOS
+
+"VALORES_CONVERTIDOS","MINIMO","MAXIMO"
+315900,41.6446701,42.0210642
+
+1 row selected.
+
+Elapsed: 00:00:01.34
+FIN PRUEBA LATITUDE
+PRUEBA LONGITUDE - TODOS LOS VALORES NO NULOS
+
+"VALORES_CONVERTIDOS","MINIMO","MAXIMO"
+315900,-87.906874,-87.525094
+
+1 row selected.
+
+Elapsed: 00:00:01.10
+FIN PRUEBA LONGITUDE
+CONVERSIONES AISLADAS COMPLETADAS SIN ERROR
+RESUMEN PROPUESTO PARA CONSULTA 10
+
+"LAT_FALTANTES","LON_FALTANTES","LAT_MINIMA","LAT_MAXIMA","LON_MINIMA","LON_MAXIMA","LAT_FUERA_RANGO","LON_FUERA_RANGO"
+1061,1061,41.6446701,42.0210642,-87.906874,-87.525094,0,0
+
+1 row selected.
+
+Elapsed: 00:00:01.58
+FIN RESUMEN CONSULTA 10
+PRUEBA SIMPLE COMPLETA
+
+FIN DE EVIDENCIA SEPARADA DE CONSULTA 10
