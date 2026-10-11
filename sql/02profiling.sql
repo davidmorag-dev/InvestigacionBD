@@ -1,11 +1,11 @@
--- 1 | P02: total de filas, ID distintos, nulos y repeticiones.
+-- 1. Verifica total de registros, IDs únicos, nulos y repeticiones
 SELECT COUNT(*) AS TOTAL_REGISTROS,
        COUNT(DISTINCT INSPECTION_ID) AS ID_DISTINTOS,
        COUNT(*) - COUNT(INSPECTION_ID) AS ID_NULOS,
        COUNT(INSPECTION_ID) - COUNT(DISTINCT INSPECTION_ID) AS REPETICIONES_ID
 FROM FOOD_INSPECTIONS_RAW;
 
--- 2 | P06: NULL y textos con solo espacios en las columnas VARCHAR2.
+-- 2. Revisa valores NULL y textos con solo espacios en columnas de texto
 WITH TEXTOS AS (
     SELECT 'DBA_NAME' AS COLUMNA, DBA_NAME AS VALOR FROM FOOD_INSPECTIONS_RAW
     UNION ALL
@@ -40,13 +40,13 @@ FROM TEXTOS
 GROUP BY COLUMNA
 ORDER BY COLUMNA;
 
--- 3 | P03: fechas mínima y máxima en YYYY-MM-DD y fechas NULL.
+-- 3. Obtiene la fecha mínima, máxima y fechas NULL
 SELECT TO_CHAR(MIN(INSPECTION_DATE), 'YYYY-MM-DD') AS FECHA_MINIMA,
        TO_CHAR(MAX(INSPECTION_DATE), 'YYYY-MM-DD') AS FECHA_MAXIMA,
        COUNT(*) - COUNT(INSPECTION_DATE) AS FECHAS_NULAS
 FROM FOOD_INSPECTIONS_RAW;
 
--- 3 | P04: fechas de los ID 67757 y 2644019 frente a la referencia del CSV.
+-- 4. Contrasta las fechas de los IDs 67757 y 2644019 con el CSV
 WITH REFERENCIA AS (
     SELECT 67757 AS INSPECTION_ID, DATE '2010-01-04' AS FECHA_CSV FROM DUAL
     UNION ALL
@@ -65,35 +65,35 @@ FROM REFERENCIA c
 LEFT JOIN FOOD_INSPECTIONS_RAW r ON r.INSPECTION_ID = c.INSPECTION_ID
 ORDER BY c.INSPECTION_ID;
 
--- 4 | P11: frecuencia de RESULTS y comparación de mayúsculas y espacios.
+-- 5. Revisa categorías y frecuencias de RESULTS
 SELECT RESULTS, UPPER(TRIM(RESULTS)) AS VALOR_COMPARACION,
        COUNT(*) AS CANTIDAD
 FROM FOOD_INSPECTIONS_RAW
 GROUP BY RESULTS
 ORDER BY CANTIDAD DESC, RESULTS;
 
--- 4 | P12: frecuencia de RISK, incluyendo NULL y All.
+-- 6. Revisa categorías y frecuencias de RISK, incluyendo All
 SELECT RISK, UPPER(TRIM(RISK)) AS VALOR_COMPARACION,
        COUNT(*) AS CANTIDAD
 FROM FOOD_INSPECTIONS_RAW
 GROUP BY RISK
 ORDER BY CANTIDAD DESC, RISK;
 
--- 4 | P16: frecuencia de FACILITY_TYPE y posibles variantes de escritura.
+-- 7. Revisa categorías y frecuencias de FACILITY_TYPE
 SELECT FACILITY_TYPE, UPPER(TRIM(FACILITY_TYPE)) AS VALOR_COMPARACION,
        COUNT(*) AS CANTIDAD
 FROM FOOD_INSPECTIONS_RAW
 GROUP BY FACILITY_TYPE
 ORDER BY CANTIDAD DESC, FACILITY_TYPE;
 
--- 4 | P17: frecuencia de INSPECTION_TYPE y posibles variantes de escritura.
+-- 8. Revisa categorías y frecuencias de INSPECTION_TYPE
 SELECT INSPECTION_TYPE, UPPER(TRIM(INSPECTION_TYPE)) AS VALOR_COMPARACION,
        COUNT(*) AS CANTIDAD
 FROM FOOD_INSPECTIONS_RAW
 GROUP BY INSPECTION_TYPE
 ORDER BY CANTIDAD DESC, INSPECTION_TYPE;
 
--- 5 | P10: candidatos con ID distintos; igual longitud no confirma igual CLOB.
+-- 9. Detecta posibles duplicados por campos y longitud, sin confirmar igualdad del CLOB
 SELECT DBA_NAME, LICENSE_NUMBER, ADDRESS,
        TO_CHAR(INSPECTION_DATE, 'YYYY-MM-DD') AS FECHA,
        LENGTH(VIOLATIONS) AS LONGITUD_VIOLATIONS,
@@ -108,7 +108,7 @@ GROUP BY DBA_NAME, AKA_NAME, LICENSE_NUMBER, FACILITY_TYPE, RISK,
 HAVING COUNT(DISTINCT INSPECTION_ID) > 1
 ORDER BY FILAS_COINCIDENTES DESC, PRIMER_ID;
 
--- 6 | P25: coordenadas ausentes, conversión decimal explícita y rangos válidos.
+-- 10. Revisa coordenadas faltantes, conversión decimal explícita y rangos válidos
 WITH COORDENADAS AS (
     SELECT TRIM(LATITUDE) AS LAT_TEXTO, TRIM(LONGITUDE) AS LON_TEXTO,
            TO_NUMBER(REPLACE(TRIM(LATITUDE), ',', '.')
@@ -135,7 +135,7 @@ SELECT COUNT(CASE WHEN LAT_TEXTO IS NULL THEN 1 END) AS LAT_FALTANTES,
        MIN(LON_NUM) AS LON_MINIMA, MAX(LON_NUM) AS LON_MAXIMA
 FROM COORDENADAS;
 
--- 7 | P29: VIOLATIONS NULL, vacíos o espacios, longitud máxima y textos >4000.
+-- 11. Revisa VIOLATIONS faltantes, vacíos o espacios, longitud máxima y textos mayores a 4000
 SELECT COUNT(CASE WHEN VIOLATIONS IS NULL THEN 1 END) AS VIOLATIONS_NULOS,
        COUNT(CASE WHEN VIOLATIONS IS NOT NULL
                        AND NVL(LENGTH(TRIM(VIOLATIONS)), 0) = 0
@@ -145,7 +145,7 @@ SELECT COUNT(CASE WHEN VIOLATIONS IS NULL THEN 1 END) AS VIOLATIONS_NULOS,
                   THEN 1 END) AS MAYORES_4000
 FROM FOOD_INSPECTIONS_RAW;
 
--- 8 | P33: licencias NULL y licencias con valor cero.
+-- 12. Cuenta licencias NULL y licencias con valor cero
 SELECT COUNT(*) - COUNT(LICENSE_NUMBER) AS LICENCIAS_NULAS,
        COUNT(CASE WHEN LICENSE_NUMBER = 0 THEN 1 END) AS LICENCIAS_CERO
 FROM FOOD_INSPECTIONS_RAW;
