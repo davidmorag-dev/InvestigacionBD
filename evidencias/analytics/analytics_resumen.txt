@@ -1,0 +1,41 @@
+DATA ANALYTICS VERIFICADO EN ORACLE - GRUPO2
+Ejecucion registrada por Oracle: 2026-10-11 18:53:22.
+Fuente analitica exclusiva: FOOD_INSPECTIONS_CLEAN.
+Script: sql/04analytics.sql. Salida: analytics_resultados.txt.
+
+VERIFICACION
+- Las siete consultas terminaron sin errores ORA, SP2 o PLS.
+- 316.961 registros y 316.961 INSPECTION_ID distintos; sin ID ni fechas NULL.
+- Los conteos por RESULTS, RISK y ano coinciden con el total general.
+- RISK y ano suman 61.038 Fail; se verificaron los 44 porcentajes publicados.
+- INSPECTION_TYPE: nueve categorias con al menos 1.000 registros; 3.879 registros omitidos de esta salida.
+- FACILITY_TYPE: doce grupos con al menos 1.000 registros, incluido SIN DATO; 11.823 registros omitidos de esta salida.
+- No se eliminaron ni reclasificaron registros de CLEAN.
+
+HALLAZGOS PRINCIPALES
+- 61.038 de 316.961 registros tienen RESULTS = 'Fail': 19,26 % del total de registros.
+- RISK: Low 20,89 %; High 19,14 %; Medium 19,05 %.
+- INSPECTION_TYPE: COMPLAINT 33,23 % y LICENSE 29,75 %.
+- FACILITY_TYPE: LIQUOR 31,51 % y MOBILE FOOD PREPARER 25,04 %; RESTAURANT 18,64 %.
+- Ano: 2010 24,92 %; 2013 15,99 %; 2025 17,66 %; 2026 parcial 18,10 %.
+
+CRITERIOS DE INTERPRETACION
+- El denominador incluye las siete categorias de RESULTS, no solamente Pass y Fail.
+- Una fila representa una inspeccion y un establecimiento puede aparecer varias veces.
+- Las diferencias son asociaciones descriptivas; no demuestran causalidad.
+- RISK conserva 87 All y 87 NULL, que requieren cautela por su tamano y significado.
+- NON-INSPECTION: 5.738 registros y 11 Fail. Se conserva en SQL y no se utiliza para concluir sobre inspecciones efectivas.
+- 2026 solo cubre hasta 2026-10-09; su cobertura no equivale a la de un ano completo.
+- El minimo de 1.000 afecta las comparaciones por tipo, no la conservacion de datos.
+
+CONTROL DE CAMBIOS DEL WORD
+1. Seccion modificada: unicamente 3.3 Data Analytics.
+2. Informacion: pregunta, indicadores, hallazgos, interpretacion y limitaciones aprobadas.
+3. Parrafos: cinco reemplazados por siete; dos parrafos adicionales netos; 291 palabras.
+4. Tablas: ninguna agregada o modificada; las dos tablas originales permanecen intactas.
+5. Paginas: 43 antes y 44 despues, verificadas mediante Microsoft Word.
+6. Reemplazo: introduccion en futuro y marcadores pendientes de preguntas, consultas, visualizaciones y hallazgos.
+7. Las demas secciones se conservaron; 3.2, anteriores, 3.4 Data Science y 3.5 no se modificaron.
+
+GUIA VISUAL
+Cuatro paginas antes y despues. Diseno actualizado; evidencia de preparacion y hallazgos esenciales de Analytics.

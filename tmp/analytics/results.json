@@ -1,0 +1,414 @@
+{
+  "USUARIO": [
+    {
+      "USUARIO": "GRUPO2",
+      "EJECUTADO_EN": "2026-10-11 18:53:22"
+    }
+  ],
+  "COLUMN_ID": [
+    {
+      "COLUMN_ID": "1",
+      "COLUMN_NAME": "INSPECTION_ID",
+      "DATA_TYPE": "NUMBER"
+    },
+    {
+      "COLUMN_ID": "2",
+      "COLUMN_NAME": "DBA_NAME",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "3",
+      "COLUMN_NAME": "AKA_NAME",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "4",
+      "COLUMN_NAME": "LICENSE_NUMBER",
+      "DATA_TYPE": "NUMBER"
+    },
+    {
+      "COLUMN_ID": "5",
+      "COLUMN_NAME": "FACILITY_TYPE",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "6",
+      "COLUMN_NAME": "RISK",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "7",
+      "COLUMN_NAME": "ADDRESS",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "8",
+      "COLUMN_NAME": "CITY",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "9",
+      "COLUMN_NAME": "STATE",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "10",
+      "COLUMN_NAME": "ZIP",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "11",
+      "COLUMN_NAME": "INSPECTION_DATE",
+      "DATA_TYPE": "DATE"
+    },
+    {
+      "COLUMN_ID": "12",
+      "COLUMN_NAME": "INSPECTION_TYPE",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "13",
+      "COLUMN_NAME": "RESULTS",
+      "DATA_TYPE": "VARCHAR2"
+    },
+    {
+      "COLUMN_ID": "14",
+      "COLUMN_NAME": "VIOLATIONS",
+      "DATA_TYPE": "CLOB"
+    },
+    {
+      "COLUMN_ID": "15",
+      "COLUMN_NAME": "LATITUDE",
+      "DATA_TYPE": "NUMBER"
+    },
+    {
+      "COLUMN_ID": "16",
+      "COLUMN_NAME": "LONGITUDE",
+      "DATA_TYPE": "NUMBER"
+    },
+    {
+      "COLUMN_ID": "17",
+      "COLUMN_NAME": "LOCATION",
+      "DATA_TYPE": "VARCHAR2"
+    }
+  ],
+  "RESULTS": [
+    {
+      "RESULTS": "Pass",
+      "TOTAL_INSPECCIONES": "164074"
+    },
+    {
+      "RESULTS": "Fail",
+      "TOTAL_INSPECCIONES": "61038"
+    },
+    {
+      "RESULTS": "Pass w/ Conditions",
+      "TOTAL_INSPECCIONES": "46991"
+    },
+    {
+      "RESULTS": "Out of Business",
+      "TOTAL_INSPECCIONES": "25930"
+    },
+    {
+      "RESULTS": "No Entry",
+      "TOTAL_INSPECCIONES": "14206"
+    },
+    {
+      "RESULTS": "Not Ready",
+      "TOTAL_INSPECCIONES": "4626"
+    },
+    {
+      "RESULTS": "Business Not Located",
+      "TOTAL_INSPECCIONES": "96"
+    }
+  ],
+  "CONTROL": [
+    {
+      "TOTAL_INSPECCIONES": "316961",
+      "ID_DISTINTOS": "316961",
+      "ID_NULOS": "0",
+      "FECHA_MINIMA": "2010-01-04",
+      "FECHA_MAXIMA": "2026-10-09",
+      "FECHAS_NULAS": "0",
+      "RISK_NULOS": "87",
+      "TIPO_INSPECCION_NULOS": "1",
+      "TIPO_ESTABLECIMIENTO_NULOS": "5357"
+    }
+  ],
+  "GENERAL": [
+    {
+      "TOTAL_INSPECCIONES": "316961",
+      "TOTAL_FAIL": "61038",
+      "PORCENTAJE_FAIL": "19,26"
+    }
+  ],
+  "RISK": [
+    {
+      "RISK": "SIN DATO",
+      "TOTAL_INSPECCIONES": "87",
+      "TOTAL_FAIL": "22",
+      "PORCENTAJE_FAIL": "25,29"
+    },
+    {
+      "RISK": "Risk 3 (Low)",
+      "TOTAL_INSPECCIONES": "24611",
+      "TOTAL_FAIL": "5142",
+      "PORCENTAJE_FAIL": "20,89"
+    },
+    {
+      "RISK": "Risk 1 (High)",
+      "TOTAL_INSPECCIONES": "235944",
+      "TOTAL_FAIL": "45157",
+      "PORCENTAJE_FAIL": "19,14"
+    },
+    {
+      "RISK": "Risk 2 (Medium)",
+      "TOTAL_INSPECCIONES": "56232",
+      "TOTAL_FAIL": "10712",
+      "PORCENTAJE_FAIL": "19,05"
+    },
+    {
+      "RISK": "All",
+      "TOTAL_INSPECCIONES": "87",
+      "TOTAL_FAIL": "5",
+      "PORCENTAJE_FAIL": "5,75"
+    }
+  ],
+  "INSPECTION_TYPE": [
+    {
+      "INSPECTION_TYPE": "COMPLAINT",
+      "TOTAL_INSPECCIONES": "30075",
+      "TOTAL_FAIL": "9993",
+      "PORCENTAJE_FAIL": "33,23"
+    },
+    {
+      "INSPECTION_TYPE": "LICENSE",
+      "TOTAL_INSPECCIONES": "42512",
+      "TOTAL_FAIL": "12646",
+      "PORCENTAJE_FAIL": "29,75"
+    },
+    {
+      "INSPECTION_TYPE": "SUSPECTED FOOD POISONING",
+      "TOTAL_INSPECCIONES": "1027",
+      "TOTAL_FAIL": "264",
+      "PORCENTAJE_FAIL": "25,71"
+    },
+    {
+      "INSPECTION_TYPE": "CANVASS",
+      "TOTAL_INSPECCIONES": "163612",
+      "TOTAL_FAIL": "29972",
+      "PORCENTAJE_FAIL": "18,32"
+    },
+    {
+      "INSPECTION_TYPE": "SHORT FORM COMPLAINT",
+      "TOTAL_INSPECCIONES": "9340",
+      "TOTAL_FAIL": "1231",
+      "PORCENTAJE_FAIL": "13,18"
+    },
+    {
+      "INSPECTION_TYPE": "COMPLAINT RE-INSPECTION",
+      "TOTAL_INSPECCIONES": "12622",
+      "TOTAL_FAIL": "1433",
+      "PORCENTAJE_FAIL": "11,35"
+    },
+    {
+      "INSPECTION_TYPE": "LICENSE RE-INSPECTION",
+      "TOTAL_INSPECCIONES": "12852",
+      "TOTAL_FAIL": "1381",
+      "PORCENTAJE_FAIL": "10,75"
+    },
+    {
+      "INSPECTION_TYPE": "CANVASS RE-INSPECTION",
+      "TOTAL_INSPECCIONES": "35304",
+      "TOTAL_FAIL": "3051",
+      "PORCENTAJE_FAIL": "8,64"
+    },
+    {
+      "INSPECTION_TYPE": "NON-INSPECTION",
+      "TOTAL_INSPECCIONES": "5738",
+      "TOTAL_FAIL": "11",
+      "PORCENTAJE_FAIL": ",19"
+    }
+  ],
+  "FACILITY_TYPE": [
+    {
+      "FACILITY_TYPE": "LIQUOR",
+      "TOTAL_INSPECCIONES": "1371",
+      "TOTAL_FAIL": "432",
+      "PORCENTAJE_FAIL": "31,51"
+    },
+    {
+      "FACILITY_TYPE": "MOBILE FOOD PREPARER",
+      "TOTAL_INSPECCIONES": "1318",
+      "TOTAL_FAIL": "330",
+      "PORCENTAJE_FAIL": "25,04"
+    },
+    {
+      "FACILITY_TYPE": "LONG TERM CARE",
+      "TOTAL_INSPECCIONES": "2438",
+      "TOTAL_FAIL": "566",
+      "PORCENTAJE_FAIL": "23,22"
+    },
+    {
+      "FACILITY_TYPE": "GROCERY STORE",
+      "TOTAL_INSPECCIONES": "37996",
+      "TOTAL_FAIL": "8574",
+      "PORCENTAJE_FAIL": "22,57"
+    },
+    {
+      "FACILITY_TYPE": "SCHOOL",
+      "TOTAL_INSPECCIONES": "19841",
+      "TOTAL_FAIL": "4315",
+      "PORCENTAJE_FAIL": "21,75"
+    },
+    {
+      "FACILITY_TYPE": "BAKERY",
+      "TOTAL_INSPECCIONES": "4559",
+      "TOTAL_FAIL": "963",
+      "PORCENTAJE_FAIL": "21,12"
+    },
+    {
+      "FACILITY_TYPE": "DAYCARE (2 - 6 YEARS)",
+      "TOTAL_INSPECCIONES": "3266",
+      "TOTAL_FAIL": "638",
+      "PORCENTAJE_FAIL": "19,53"
+    },
+    {
+      "FACILITY_TYPE": "DAYCARE ABOVE AND UNDER 2 YEARS",
+      "TOTAL_INSPECCIONES": "4198",
+      "TOTAL_FAIL": "789",
+      "PORCENTAJE_FAIL": "18,79"
+    },
+    {
+      "FACILITY_TYPE": "RESTAURANT",
+      "TOTAL_INSPECCIONES": "215024",
+      "TOTAL_FAIL": "40078",
+      "PORCENTAJE_FAIL": "18,64"
+    },
+    {
+      "FACILITY_TYPE": "CHILDREN'S SERVICES FACILITY",
+      "TOTAL_INSPECCIONES": "7811",
+      "TOTAL_FAIL": "1307",
+      "PORCENTAJE_FAIL": "16,73"
+    },
+    {
+      "FACILITY_TYPE": "CATERING",
+      "TOTAL_INSPECCIONES": "1959",
+      "TOTAL_FAIL": "290",
+      "PORCENTAJE_FAIL": "14,8"
+    },
+    {
+      "FACILITY_TYPE": "SIN DATO",
+      "TOTAL_INSPECCIONES": "5357",
+      "TOTAL_FAIL": "393",
+      "PORCENTAJE_FAIL": "7,34"
+    }
+  ],
+  "ANO": [
+    {
+      "ANO": "2010",
+      "TOTAL_INSPECCIONES": "18068",
+      "TOTAL_FAIL": "4503",
+      "PORCENTAJE_FAIL": "24,92"
+    },
+    {
+      "ANO": "2011",
+      "TOTAL_INSPECCIONES": "18747",
+      "TOTAL_FAIL": "4355",
+      "PORCENTAJE_FAIL": "23,23"
+    },
+    {
+      "ANO": "2012",
+      "TOTAL_INSPECCIONES": "18866",
+      "TOTAL_FAIL": "3642",
+      "PORCENTAJE_FAIL": "19,3"
+    },
+    {
+      "ANO": "2013",
+      "TOTAL_INSPECCIONES": "20947",
+      "TOTAL_FAIL": "3349",
+      "PORCENTAJE_FAIL": "15,99"
+    },
+    {
+      "ANO": "2014",
+      "TOTAL_INSPECCIONES": "21540",
+      "TOTAL_FAIL": "3719",
+      "PORCENTAJE_FAIL": "17,27"
+    },
+    {
+      "ANO": "2015",
+      "TOTAL_INSPECCIONES": "20911",
+      "TOTAL_FAIL": "3607",
+      "PORCENTAJE_FAIL": "17,25"
+    },
+    {
+      "ANO": "2016",
+      "TOTAL_INSPECCIONES": "22818",
+      "TOTAL_FAIL": "4298",
+      "PORCENTAJE_FAIL": "18,84"
+    },
+    {
+      "ANO": "2017",
+      "TOTAL_INSPECCIONES": "21587",
+      "TOTAL_FAIL": "4121",
+      "PORCENTAJE_FAIL": "19,09"
+    },
+    {
+      "ANO": "2018",
+      "TOTAL_INSPECCIONES": "17192",
+      "TOTAL_FAIL": "3318",
+      "PORCENTAJE_FAIL": "19,3"
+    },
+    {
+      "ANO": "2019",
+      "TOTAL_INSPECCIONES": "19052",
+      "TOTAL_FAIL": "3612",
+      "PORCENTAJE_FAIL": "18,96"
+    },
+    {
+      "ANO": "2020",
+      "TOTAL_INSPECCIONES": "15123",
+      "TOTAL_FAIL": "2935",
+      "PORCENTAJE_FAIL": "19,41"
+    },
+    {
+      "ANO": "2021",
+      "TOTAL_INSPECCIONES": "15868",
+      "TOTAL_FAIL": "3035",
+      "PORCENTAJE_FAIL": "19,13"
+    },
+    {
+      "ANO": "2022",
+      "TOTAL_INSPECCIONES": "16936",
+      "TOTAL_FAIL": "3554",
+      "PORCENTAJE_FAIL": "20,98"
+    },
+    {
+      "ANO": "2023",
+      "TOTAL_INSPECCIONES": "18261",
+      "TOTAL_FAIL": "3835",
+      "PORCENTAJE_FAIL": "21"
+    },
+    {
+      "ANO": "2024",
+      "TOTAL_INSPECCIONES": "19228",
+      "TOTAL_FAIL": "3481",
+      "PORCENTAJE_FAIL": "18,1"
+    },
+    {
+      "ANO": "2025",
+      "TOTAL_INSPECCIONES": "19205",
+      "TOTAL_FAIL": "3391",
+      "PORCENTAJE_FAIL": "17,66"
+    },
+    {
+      "ANO": "2026",
+      "TOTAL_INSPECCIONES": "12612",
+      "TOTAL_FAIL": "2283",
+      "PORCENTAJE_FAIL": "18,1"
+    }
+  ],
+  "INSPECTION_TYPE_OMITIDAS": 3879,
+  "FACILITY_TYPE_OMITIDAS": 11823,
+  "PORCENTAJES_VERIFICADOS": 44
+}
