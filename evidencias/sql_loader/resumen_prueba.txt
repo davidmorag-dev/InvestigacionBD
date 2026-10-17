@@ -1,0 +1,39 @@
+PRUEBA PARALELA SQL*LOADER - 2026-10-16
+
+Cliente: Oracle SQL*Loader 21.3.0.0.0, disponible en PATH.
+ORACLE_HOME: C:\app\Administrador\product\21c\dbhomeXE
+Usuario y base confirmados por SELECT: GRUPO2 / XE.
+Servicios OracleServiceXE y listener: activos; puerto localhost:1521 accesible.
+
+ANTES DE LA CARGA (SELECT real en Oracle):
+FOOD_INSPECTIONS_RAW: 316961 filas, 316961 INSPECTION_ID distintos.
+FOOD_INSPECTIONS_RAW_LOADER_TEST: no existia; se creo con 17 columnas.
+
+CARGA (resultado del log real de SQL*Loader):
+Inicio: 2026-10-16 18:27:47, hora del sistema que genero el log.
+Fin: 2026-10-16 18:28:03, hora del sistema que genero el log.
+Filas cargadas: 7937.
+Registros logicos leidos: 7966; encabezados omitidos: 1.
+Rechazos registrados: 0; descartes registrados: 0.
+Codigo de salida: 1 (error).
+SQL*Loader-462: error inserting LOB into column VIOLATIONS, row 7942.
+ORA-12954: The request exceeds the maximum allowed database size of 12 GB.
+SQL*Loader-2026: the load was aborted because SQL Loader cannot continue.
+
+CONCLUSION:
+Carga incompleta. No coincide en cantidad con las 316961 filas esperadas.
+La tabla de prueba contiene una carga parcial; no se ejecuto comparacion completa.
+No se consideran verificados fechas, NULL, distribuciones ni contenido de la carga completa.
+No se modifico RAW oficial y no se ejecutaron DROP, TRUNCATE ni recargas posteriores.
+
+INCIDENCIAS PREVIAS:
+- El comando con userid=GRUPO2@localhost:1521/xe fallo sin pedir contrasena (ORA-01017).
+- La conexion funciono con ORACLE_SID=XE y userid=GRUPO2, solicitando la contrasena.
+- Se corrigio SQL*Loader-350 del control; la carga final uso INSERT predeterminado.
+
+COMANDO PARA UNA FUTURA CARGA, SOLO DESPUES DE RESOLVER CAPACIDAD Y TABLA PARCIAL:
+$env:ORACLE_HOME = 'C:\app\Administrador\product\21c\dbhomeXE'
+$env:ORACLE_SID = 'XE'
+sqlldr userid=GRUPO2 control=sql_loader/food_inspections.ctl log=evidencias/sql_loader/food_inspections.log
+
+No hay contrasenas guardadas en los archivos de esta prueba.

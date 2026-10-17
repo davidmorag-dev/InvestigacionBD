@@ -1,0 +1,37 @@
+DEMO SQL*LOADER - 500 FILAS - VERIFICADA EN ORACLE
+
+Usuario/base: GRUPO2 / XE.
+Origen: encabezado y primeras 500 filas de data/Food_Inspections_20261010.csv.
+Muestra: sql_loader/food_inspections_demo_500.csv, 17 columnas, sin transformar valores.
+
+Preparacion:
+- La tabla parcial tenia 7937 filas; se elimino exclusivamente FOOD_INSPECTIONS_RAW_LOADER_TEST con DROP TABLE ... PURGE.
+- Se recreo la tabla de prueba con las mismas 17 columnas; quedo vacia antes de cargar.
+
+Carga SQL*Loader 21.3:
+- 500 filas cargadas, cero rechazos y cero descartes.
+- Codigo de salida: 0.
+
+SELECT verificados:
+- Total: 500; IDs distintos: 500; IDs NULL: 0.
+- Fechas: 2026-09-23 a 2026-10-09.
+- VIOLATIONS: maximo 6411 caracteres; 10 textos mayores de 4000; 169 NULL.
+- IDs ausentes en RAW: 0.
+- IDs comparados con RAW: 500; diferencias de contenido: 0 en todas las columnas.
+- VIOLATIONS se comparo completo con DBMS_LOB.COMPARE, sin recortarlo.
+- Codigo de salida de la validacion final: 0.
+
+Fuentes oficiales, conteos antes y despues:
+RAW:     316961 -> 316961.
+CLEAN:   316961 -> 316961.
+SCIENCE: 103596 -> 103596 (vista).
+No se ejecutaron modificaciones sobre estas fuentes.
+
+Incidencia corregida:
+COUNT(VIOLATIONS) produjo ORA-00932 por tratarse de CLOB. Se sustituyo por
+SUM(CASE WHEN VIOLATIONS IS NULL THEN 1 ELSE 0 END) y se ejecutaron nuevamente
+solo las consultas de validacion. No se repitio la carga.
+
+La demo muestra el mecanismo de carga; no representa todo el dataset.
+El CSV original, los otros scripts, Word y PDF no se modificaron.
+tmp/ permanece vacia. No se guardaron contrasenas.

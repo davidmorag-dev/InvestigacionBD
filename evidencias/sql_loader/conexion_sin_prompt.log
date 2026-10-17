@@ -1,0 +1,9 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Fri Oct 16 18:25:21 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+SQL*Loader-128: unable to begin a session
+ORA-01017: nombre de usuario/contraseña no válidos; conexión denegada
+

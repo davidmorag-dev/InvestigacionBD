@@ -1,0 +1,67 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Fri Oct 16 18:38:17 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   sql_loader/food_inspections.ctl
+Character Set AL32UTF8 specified for all input.
+
+Data File:      sql_loader/food_inspections_demo_500.csv
+  Bad File:     evidencias/sql_loader/demo.bad
+  Discard File: evidencias/sql_loader/demo.dsc 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 0
+Bind array:     250 rows, maximum of 1048576 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table FOOD_INSPECTIONS_RAW_LOADER_TEST, loaded from every logical record.
+Insert option in effect for this table: INSERT
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+INSPECTION_ID                       FIRST    38   ,  O(") CHARACTER            
+DBA_NAME                             NEXT   255   ,  O(") CHARACTER            
+AKA_NAME                             NEXT   255   ,  O(") CHARACTER            
+LICENSE_NUMBER                       NEXT    38   ,  O(") CHARACTER            
+FACILITY_TYPE                        NEXT   255   ,  O(") CHARACTER            
+RISK                                 NEXT   100   ,  O(") CHARACTER            
+ADDRESS                              NEXT   255   ,  O(") CHARACTER            
+CITY                                 NEXT   100   ,  O(") CHARACTER            
+STATE                                NEXT    20   ,  O(") CHARACTER            
+ZIP                                  NEXT    20   ,  O(") CHARACTER            
+INSPECTION_DATE                      NEXT     *   ,  O(") DATE MM/DD/YYYY      
+INSPECTION_TYPE                      NEXT   255   ,  O(") CHARACTER            
+RESULTS                              NEXT   100   ,  O(") CHARACTER            
+VIOLATIONS                           NEXT 32767   ,  O(") CHARACTER            
+LATITUDE                             NEXT    50   ,  O(") CHARACTER            
+LONGITUDE                            NEXT    50   ,  O(") CHARACTER            
+LOCATION                             NEXT   255   ,  O(") CHARACTER            
+
+value used for ROWS parameter changed from 250 to 29
+
+Table FOOD_INSPECTIONS_RAW_LOADER_TEST:
+  500 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                1018190 bytes(29 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:           500
+Total logical records rejected:         0
+Total logical records discarded:        0
+
+Run began on Fri Oct 16 18:38:17 2026
+Run ended on Fri Oct 16 18:38:27 2026
+
+Elapsed time was:     00:00:10.81
+CPU time was:         00:00:00.44
