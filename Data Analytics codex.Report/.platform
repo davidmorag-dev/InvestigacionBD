@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Data Analytics codex"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3089718b-9791-488d-a47b-e074bf9d2865"
+  }
+}
