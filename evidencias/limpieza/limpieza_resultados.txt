@@ -252,3 +252,23 @@ Transcurrido: 00:00:01.94
 SQL> PROMPT FIN DEL PROCESO Y DE LAS VALIDACIONES
 FIN DEL PROCESO Y DE LAS VALIDACIONES
 SQL> SPOOL OFF
+
+
+REVALIDACION POSTERIOR A LA CARGA COMPLETA DE RAW - 18/10/2026
+Las 8 consultas de validacion de 03cleaning.sql se ejecutaron nuevamente en Oracle.
+RAW / CLEAN: 316961 filas e IDs distintos en ambas tablas; IDs NULL: 0.
+FACILITY_TYPE: 527 -> 473; INSPECTION_TYPE: 110 -> 98.
+ADDRESS solo espacios: 3 -> 0; ADDRESS NULL: 0 -> 3.
+LATITUDE y LONGITUDE: 1061 NULL por columna; 0 fuera de rango; mismos extremos.
+VIOLATIONS: CLOB; 89410 NULL; maximo 12706; 4469 textos mayores de 4000 en ambas tablas.
+
+Validacion adicional realizada en la revalidacion completa previa:
+Diferencias entre los conjuntos de INSPECTION_ID, en ambos sentidos: 0.
+Consulta de comparacion del contenido completo de VIOLATIONS:
+SELECT COUNT(*) AS DIFERENCIAS_VIOLATIONS
+FROM FOOD_INSPECTIONS_RAW r
+JOIN FOOD_INSPECTIONS_CLEAN c ON c.INSPECTION_ID = r.INSPECTION_ID
+WHERE (r.VIOLATIONS IS NULL AND c.VIOLATIONS IS NOT NULL)
+   OR (r.VIOLATIONS IS NOT NULL AND c.VIOLATIONS IS NULL)
+   OR DBMS_LOB.COMPARE(r.VIOLATIONS, c.VIOLATIONS) <> 0;
+Resultado real conservado del control temporal: DIFERENCIAS_VIOLATIONS = 0.

@@ -1,17 +1,6 @@
-DATA SCIENCE - EVIDENCIA DE LA PRIMERA EJECUCION
-Fuente: FOOD_INSPECTIONS_CLEAN. Usuario: GRUPO2.
-Vista: FOOD_INSPECTIONS_SCIENCE, WITH READ ONLY.
-Comando reproducible: py -3.14 python/01_data_science.py --preparar
-Contrasena solicitada en ejecucion; no guardada en archivos.
-
-ARCHIVOS EJECUTADOS (SHA256)
-python/01_data_science.py: 478f425f58fe5e9b380981318ceb39056f4aa32a0b4c2f5d14bea82e9f613534
-python/requirements.txt: 36e14ab02d15788eb14dc5b193d664f34c8497b5fa4fcfd4178e1b717b803d44
-sql/05science_dataset.sql: f275a458153674aa10039c24ba064ec388f6ce605284a73eb7e4a7cdf9222c9e
-
-SALIDA DE LA EJECUCION
+Ejecucion real: py -3.14 python/03_evaluate.py
 DATA SCIENCE - VERSION 1
-Inicio local: 2026-10-11T22:04:21
+Inicio local: 2026-10-18T23:10:15
 Python: 3.14.7
 oracledb: 26.0.1
 pandas: 3.0.6
@@ -19,36 +8,6 @@ scikit-learn: 1.9.1
 numpy: 2.5.4
 scipy: 1.18.1
 Usuario Oracle: GRUPO2
-
-SQL 1
-Vista FOOD_INSPECTIONS_SCIENCE creada.
-
-SQL 2
- TOTAL  TOTAL_FAIL  TOTAL_NO_FAIL  PORCENTAJE_FAIL
-103596       23838          79758            23.01
-
-SQL 3
-        PERIODO  TOTAL  TOTAL_FAIL  TOTAL_NO_FAIL  PORCENTAJE_FAIL
-TRAIN 2019-2024  87539       20447          67092            23.36
-      TEST 2025  16057        3391          12666            21.12
-
-SQL 4
- ANO  TOTAL  TOTAL_FAIL  PORCENTAJE_FAIL
-2019  16121        3612            22.41
-2020  12598        2934            23.29
-2021  13134        3035            23.11
-2022  14284        3554            24.88
-2023  15409        3833            24.88
-2024  15993        3479            21.75
-2025  16057        3391            21.12
-
-SQL 5
- RISK_NULOS  RISK_CATEGORIAS  FACILITY_NULOS  FACILITY_CATEGORIAS  ZIP_NULOS  ZIP_CATEGORIAS  MES_NULOS  MESES
-          2                3             116                  234          3             102          0     12
-
-SQL 6
- REGISTROS_CLEAN  ELEGIBLES_ANTES_EXCLUSION  NON_INSPECTION_EXCLUIDOS
-          316961                     103614                        18
 
 Validacion: fuente filtrada, vista y Python coinciden por ano y clase.
 CLEAN antes/despues: 316961/316961; sin DML sobre CLEAN.
@@ -72,6 +31,16 @@ Matriz: filas=reales, columnas=predichos; orden No Fail (0), Fail (1)
               Pred No Fail  Pred Fail
 Real No Fail         12666          0
 Real Fail             3391          0
+
+Baseline: Siempre Fail
+Accuracy         0.211185
+Precision Fail   0.211185
+Recall Fail      1.000000
+F1 Fail          0.348725
+Matriz: filas=reales, columnas=predichos; orden No Fail (0), Fail (1)
+              Pred No Fail  Pred Fail
+Real No Fail             0      12666
+Real Fail                0       3391
 
 Parametros fijados antes de evaluar: class_weight=balanced en ambos modelos;
 logistica C=1, max_iter=1000; arbol max_depth=4, min_samples_leaf=100; semilla=42.
@@ -111,34 +80,12 @@ Es importancia interna del arbol, no causalidad ni una medida del otro modelo.
 COMPARACION EN TEST 2025 (metricas de 0 a 1)
                    Modelo  Accuracy  Precision Fail  Recall Fail  F1 Fail
 Baseline: siempre clase 0  0.788815        0.000000     0.000000 0.000000
+   Baseline: Siempre Fail  0.211185        0.211185     1.000000 0.348725
       Regresion Logistica  0.535530        0.228831     0.506045 0.315152
         Arbol de Decision  0.771751        0.256228     0.042465 0.072856
+Siempre Fail detecta todos los Fail, pero genera una falsa alarma por cada No Fail.
+La logistica reduce esas falsas alarmas; Siempre Fail puede obtener un F1 mayor.
+La capacidad predictiva es modesta: es un experimento academico, no una solucion operativa.
 LIMITES: establecimientos repetidos; categorias raras; valores previos asumidos;
 2026 excluido; importancia no causal; ponderar Fail puede reducir accuracy.
 EXPERIMENTO TERMINADO SIN ERRORES. No se modificaron Word ni PDF.
-
-PYTHON_EXIT_CODE=0
-
-VERIFICACION INDEPENDIENTE
-- Los conteos por ano y clase de la fuente filtrada, la vista y Python coinciden.
-- 103.614 elegibles de 2019-2025 menos 18 NON-INSPECTION = 103.596 registros.
-- Train: 87.539; test: 16.057. Sus clases suman 23.838 Fail y 79.758 No Fail.
-- Las tres matrices suman 16.057; cada una conserva 3.391 Fail y 12.666 No Fail reales.
-- Accuracy, precision, recall y F1 se recalcularon desde las matrices y coinciden.
-- La regresion convergio en 70 iteraciones; el arbol tiene profundidad 4 y 11 hojas.
-- ANO y FAIL no se incluyeron como predictoras. Codificacion ajustada solo con train.
-- Ambos modelos usan class_weight=balanced; no se ajustaron parametros con test.
-- Word, PDF y todos los archivos previos conservaron sus hashes.
-
-INTERPRETACION Y LIMITACIONES
-- La logistica detecta mas Fail (recall 50,60%; F1 0,3152), con 5.783 falsos positivos.
-- El arbol detecta solo 144 de 3.391 Fail (recall 4,25%); su accuracy no implica buena deteccion.
-- El baseline acierta 78,88% pero no detecta ningun Fail. Accuracy sola resulta insuficiente.
-- El rendimiento es limitado; estos resultados no justifican una aplicacion operativa.
-- La importancia interna del arbol no es causal ni mide la importancia en la logistica.
-- Un establecimiento puede aparecer varias veces en train y test; no es una evaluacion exclusiva de locales nuevos.
-- Hay categorias raras y categorias nuevas en test; OneHotEncoder las admite con handle_unknown=ignore.
-- La disponibilidad previa de los atributos se asume; CLEAN no incluye un historial de sus actualizaciones.
-- 2026 se excluyo por estar incompleto. La vista refleja los datos actuales de CLEAN.
-- No se volvieron a entrenar los modelos ni se modificaron Word o PDF.
-

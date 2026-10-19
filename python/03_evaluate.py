@@ -90,6 +90,8 @@ def main():
     mayoritaria = int(y_train.value_counts().idxmax())
     baseline = [mayoritaria] * len(y_test)
     resultados = [evaluar(f"Baseline: siempre clase {mayoritaria}", y_test, baseline)]
+    # Referencia adicional: clasifica todas las inspecciones como Fail.
+    resultados.append(evaluar("Baseline: Siempre Fail", y_test, [1] * len(y_test)))
 
     print("\nParametros fijados antes de evaluar: class_weight=balanced en ambos modelos;")
     print("logistica C=1, max_iter=1000; arbol max_depth=4, min_samples_leaf=100; semilla=42.")
@@ -113,6 +115,9 @@ def main():
 
     print("\nCOMPARACION EN TEST 2025 (metricas de 0 a 1)")
     print(pd.DataFrame(resultados).to_string(index=False, float_format=lambda n: f"{n:.6f}"))
+    print("Siempre Fail detecta todos los Fail, pero genera una falsa alarma por cada No Fail.")
+    print("La logistica reduce esas falsas alarmas; Siempre Fail puede obtener un F1 mayor.")
+    print("La capacidad predictiva es modesta: es un experimento academico, no una solucion operativa.")
     print("LIMITES: establecimientos repetidos; categorias raras; valores previos asumidos;")
     print("2026 excluido; importancia no causal; ponderar Fail puede reducir accuracy.")
     print("EXPERIMENTO TERMINADO SIN ERRORES. No se modificaron Word ni PDF.")

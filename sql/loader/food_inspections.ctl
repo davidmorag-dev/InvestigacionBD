@@ -6,8 +6,8 @@ LOAD DATA
 CHARACTERSET AL32UTF8
 INFILE 'data/Food_Inspections_20261010.csv'
 
-BADFILE 'evidencias/sql_loader/carga_raw.bad'
-DISCARDFILE 'evidencias/sql_loader/carga_raw.dsc'
+BADFILE 'sql/loader/carga_raw.bad'
+DISCARDFILE 'sql/loader/carga_raw.dsc'
 
 PRESERVE BLANKS
 
