@@ -119,4 +119,4 @@ Abrir `powerbi/Data Analytics final.pbix`, configurar las credenciales de GRUPO2
 
 ## Evidencia disponible
 
-`sql/loader/carga_raw.log` conserva la carga completa. `evidencias/` contiene salidas verificadas de perfilado, normalización, limpieza, Analytics y Science. Las capturas finales del documento se tomarán manualmente; los archivos de texto son respaldo técnico.
+`sql/loader/carga_raw.log` conserva la carga completa. Los resultados de perfilado, normalización, limpieza y Analytics pueden reproducirse con los scripts oficiales de `sql/`; los de Science, con `python/03_evaluate.py`.

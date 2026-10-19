@@ -118,9 +118,9 @@ def main():
     print("Siempre Fail detecta todos los Fail, pero genera una falsa alarma por cada No Fail.")
     print("La logistica reduce esas falsas alarmas; Siempre Fail puede obtener un F1 mayor.")
     print("La capacidad predictiva es modesta: es un experimento academico, no una solucion operativa.")
-    print("LIMITES: establecimientos repetidos; categorias raras; valores previos asumidos;")
-    print("2026 excluido; importancia no causal; ponderar Fail puede reducir accuracy.")
-    print("EXPERIMENTO TERMINADO SIN ERRORES. No se modificaron Word ni PDF.")
+    print("LIMITES: establecimientos repetidos, categorias raras, 2026 excluido e importancia no causal.")
+
+    print("EXPERIMENTO FINALIZADO CORRECTAMENTE.")
 
 
 if __name__ == "__main__":
