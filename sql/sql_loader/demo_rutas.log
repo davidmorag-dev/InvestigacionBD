@@ -1,0 +1,67 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Dom Oct 18 16:13:07 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Archivo de Control:   sql/food_inspections.ctl
+Juego de caracteres AL32UTF8 especificado para todas las entradas.
+
+Archivo de Datos:      data/food_inspections_demo_500.csv
+  Archivo de Errores:     evidencias/sql_loader/demo.bad
+  Desechar Archivo: evidencias/sql_loader/demo.dsc 
+ (Permitir todos los registros desechados)
+
+Número a cargar: ALL
+Número que omitir: 1
+Errores permitidos: 0
+Matriz de enlace:     250 filas, máximo de 1048576 bytes
+Continuación:    ninguno especificado
+Ruta de acceso utilizada:      Convencional
+
+Tabla FOOD_INSPECTIONS_RAW_LOADER_TEST, cargada de cada registro lógico.
+Opción INSERT activa para esta tabla: INSERT
+Opción TRAILING NULLCOLS activada
+
+   Nombre Columna                  Posición   Long  Term Entorno Tipo de Dato
+------------------------------ ---------- ----- ---- ---- ---------------------
+INSPECTION_ID                       FIRST    38   ,  O(") CHARACTER            
+DBA_NAME                             NEXT   255   ,  O(") CHARACTER            
+AKA_NAME                             NEXT   255   ,  O(") CHARACTER            
+LICENSE_NUMBER                       NEXT    38   ,  O(") CHARACTER            
+FACILITY_TYPE                        NEXT   255   ,  O(") CHARACTER            
+RISK                                 NEXT   100   ,  O(") CHARACTER            
+ADDRESS                              NEXT   255   ,  O(") CHARACTER            
+CITY                                 NEXT   100   ,  O(") CHARACTER            
+STATE                                NEXT    20   ,  O(") CHARACTER            
+ZIP                                  NEXT    20   ,  O(") CHARACTER            
+INSPECTION_DATE                      NEXT     *   ,  O(") DATE MM/DD/YYYY      
+INSPECTION_TYPE                      NEXT   255   ,  O(") CHARACTER            
+RESULTS                              NEXT   100   ,  O(") CHARACTER            
+VIOLATIONS                           NEXT 32767   ,  O(") CHARACTER            
+LATITUDE                             NEXT    50   ,  O(") CHARACTER            
+LONGITUDE                            NEXT    50   ,  O(") CHARACTER            
+LOCATION                             NEXT   255   ,  O(") CHARACTER            
+
+el valor utilizado para el parámetro ROWS ha cambiado de 250 a 29
+
+Tabla FOOD_INSPECTIONS_RAW_LOADER_TEST:
+  500 Filas cargadas correctamente.
+  0 Filas no cargadas debido a errores de datos.
+  0 Filas no cargadas porque todas las cláusulas WHEN han fallado.
+  0 Filas no cargadas porque todos los campos eran nulos.
+
+
+Espacio asignado a matriz de enlace:          1018190 bytes (29 filas)
+Bytes de buffer de lectura: 1048576
+
+Total de registros lógicos omitidos:          1
+Total de registros lógicos leídos:         500
+Total de registros lógicos rechazados:         0
+Total de registros lógicos desechados:        0
+
+La ejecución empezó en Dom Oct 18 16:13:07 2026
+La ejecución terminó en Dom Oct 18 16:13:31 2026
+
+Tiempo transcurrido:     00:00:24.22
+Tiempo de CPU:         00:00:00.13

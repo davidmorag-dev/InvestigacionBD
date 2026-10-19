@@ -1,5 +1,0 @@
-relationship b9adcc24-34c8-467c-b1f7-b5a64877ed15
-	joinOnDateBehavior: datePartOnly
-	fromColumn: FOOD_INSPECTIONS_CLEAN.INSPECTION_DATE
-	toColumn: LocalDateTable_edb2cf71-53f3-4e3d-8d6a-4f2264f5b3ee.Date
-

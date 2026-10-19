@@ -1,3 +1,11 @@
+-- Ejecuta estos pasos desde la raíz del proyecto; cada cliente pide la contraseña.
+-- SQL*Plus: sqlplus GRUPO2@localhost:1521/xe
+-- Si la tabla de prueba ya existe: DROP TABLE FOOD_INSPECTIONS_RAW_LOADER_TEST PURGE;
+-- SQL*Plus: @sql/00_sql_loader_test.sql y luego EXIT
+-- PowerShell: $env:ORACLE_SID = 'XE'
+-- PowerShell: sqlldr userid=GRUPO2 control=sql/food_inspections.ctl log=evidencias/sql_loader/demo_rutas.log
+-- Validación: sqlplus GRUPO2@localhost:1521/xe @sql/validacion_demo.sql
+
 -- 1. Crea solamente la tabla de prueba con las mismas 17 columnas de RAW
 CREATE TABLE FOOD_INSPECTIONS_RAW_LOADER_TEST (
     INSPECTION_ID    NUMBER(38),

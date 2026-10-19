@@ -12,9 +12,9 @@ SQL> SELECT COUNT(*) AS TOTAL, COUNT(DISTINCT INSPECTION_ID) AS IDS_DISTINTOS,
 "TOTAL","IDS_DISTINTOS","IDS_NULOS","FECHA_MINIMA","FECHA_MAXIMA","VIOLATIONS_MAXIMO","MAYORES_4000","VIOLATIONS_NULOS"
 500,500,0,"2026-09-23","2026-10-09",6411,10,169
 
-1 row selected.
+1 fila seleccionada.
 
-Elapsed: 00:00:00.08
+Transcurrido: 00:00:00.01
 SQL> 
 SQL> -- 2. Busca IDs de la muestra ausentes en RAW
 SQL> SELECT COUNT(*) AS IDS_AUSENTES_EN_RAW
@@ -24,9 +24,9 @@ SQL> SELECT COUNT(*) AS IDS_AUSENTES_EN_RAW
 "IDS_AUSENTES_EN_RAW"
 0
 
-1 row selected.
+1 fila seleccionada.
 
-Elapsed: 00:00:00.28
+Transcurrido: 00:00:00.08
 SQL> 
 SQL> -- 3. Compara el contenido de las 17 columnas por ID, incluido VIOLATIONS completo
 SQL> SELECT COUNT(*) AS IDS_COMPARADOS,
@@ -55,9 +55,9 @@ SQL> SELECT COUNT(*) AS IDS_COMPARADOS,
 "IDS_COMPARADOS","DBA_DIF","AKA_DIF","LICENSE_DIF","FACILITY_DIF","RISK_DIF","ADDRESS_DIF","CITY_DIF","STATE_DIF","ZIP_DIF","DATE_DIF","TYPE_DIF","RESULTS_DIF","VIOLATIONS_DIF","LATITUDE_DIF","LONGITUDE_DIF","LOCATION_DIF"
 500,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
-1 row selected.
+1 fila seleccionada.
 
-Elapsed: 00:00:03.29
+Transcurrido: 00:00:00.82
 SQL> 
 SQL> -- 4. Muestra tres textos largos y comprueba que coinciden completos con RAW
 SQL> SELECT t.INSPECTION_ID, LENGTH(t.VIOLATIONS) AS LONGITUD_TEST,
@@ -73,9 +73,9 @@ SQL> SELECT t.INSPECTION_ID, LENGTH(t.VIOLATIONS) AS LONGITUD_TEST,
 2643397,5928,5928,0
 2643282,5146,5146,0
 
-3 rows selected.
+3 filas seleccionadas.
 
-Elapsed: 00:00:11.06
+Transcurrido: 00:00:04.97
 SQL> 
 SQL> -- 5. Confirma los conteos de las fuentes oficiales despues de la demo
 SQL> SELECT 'RAW' AS FUENTE, COUNT(*) AS TOTAL FROM FOOD_INSPECTIONS_RAW
@@ -89,8 +89,8 @@ SQL> SELECT 'RAW' AS FUENTE, COUNT(*) AS TOTAL FROM FOOD_INSPECTIONS_RAW
 "CLEAN",316961
 "SCIENCE",103596
 
-3 rows selected.
+3 filas seleccionadas.
 
-Elapsed: 00:00:01.99
+Transcurrido: 00:00:01.82
 SQL> 
 SQL> SPOOL OFF

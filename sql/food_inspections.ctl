@@ -1,16 +1,23 @@
--- 1. Omite el encabezado y detiene la carga ante errores
+-- 1. Omite el encabezado y detiene la carga ante cualquier error
 OPTIONS (SKIP=1, ERRORS=0, EMPTY_LOBS_ARE_NULL=TRUE)
--- 2. Carga solo la muestra y conserva sus espacios originales
+
+-- 2. Carga el dataset original completo conservando sus espacios
 LOAD DATA
 CHARACTERSET AL32UTF8
-INFILE 'sql_loader/food_inspections_demo_500.csv'
-BADFILE 'evidencias/sql_loader/demo.bad'
-DISCARDFILE 'evidencias/sql_loader/demo.dsc'
+INFILE 'data/Food_Inspections_20261010.csv'
+
+BADFILE 'evidencias/sql_loader/carga_raw.bad'
+DISCARDFILE 'evidencias/sql_loader/carga_raw.dsc'
+
 PRESERVE BLANKS
-INTO TABLE FOOD_INSPECTIONS_RAW_LOADER_TEST
+
+-- 3. Carga directamente en la tabla RAW oficial
+INTO TABLE FOOD_INSPECTIONS_RAW
+
 FIELDS CSV WITH EMBEDDED
 TRAILING NULLCOLS
--- 3. Lee las 17 columnas en el mismo orden del CSV
+
+-- 4. Lee las 17 columnas en el mismo orden del CSV original
 (
     INSPECTION_ID    INTEGER EXTERNAL(38),
     DBA_NAME         CHAR(255),
@@ -25,8 +32,10 @@ TRAILING NULLCOLS
     INSPECTION_DATE  DATE "MM/DD/YYYY",
     INSPECTION_TYPE  CHAR(255),
     RESULTS          CHAR(100),
-    -- Permite leer textos largos que se almacenan completos como CLOB
+
+    -- Permite almacenar textos largos completos en la columna CLOB
     VIOLATIONS       CHAR(32767),
+
     LATITUDE         CHAR(50),
     LONGITUDE        CHAR(50),
     LOCATION         CHAR(255)
